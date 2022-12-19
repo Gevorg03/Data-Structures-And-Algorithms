@@ -1,4 +1,5 @@
 import DoublyLinkedList.DoublyLinkedList;
+import Heap.Heap;
 import Stack.ArrStack;
 import Tree.Tree;
 import Tree.Node;
@@ -126,62 +127,27 @@ public class Main {
 //        System.out.print("\nPostorder: ");
 //        tree.postorder();
 
-        BSTree<Integer> tree = new BSTree<Integer>();
-        tree.insertIter(44);
-        tree.insertIter(22);
-        tree.insertIter(30);
-        tree.insertIter(17);
-        tree.insertIter(27);
-        tree.insertIter(26);
-        tree.insertIter(25);
-        tree.insertIter(666);
-        tree.insertIter(55);
-        tree.insertIter(8);
+        Heap<Integer> heap = new Heap<Integer>();
+        heap.insert(10);
+        heap.insert(7);
+        heap.insert(14);
+        heap.insert(55);
+        heap.insert(9);
+        heap.insert(1);
+        heap.insert(3);
 
-        System.out.print("Preorder: ");
-        tree.preorder();
+        System.out.println(heap.get());
 
-        System.out.print("\nPreorder Iterative: ");
-        tree.preorderIter();
+        heap.remove();
 
-        System.out.print("\nInorder: ");
-        tree.inorder();
+        System.out.println(heap.get());
 
-        System.out.print("\nInorder Iterative : ");
-        tree.inorderIter();
+        heap.print();
 
-        System.out.print("\nPostorder: ");
-        tree.postorder();
-
-        System.out.print("\nPostorder Iterative : ");
-        tree.postorderIter();
-
-        System.out.print("\nLevelorder : ");
-        tree.levelorder();
-
-        System.out.print("\nWidth : " + tree.width());
-
-        System.out.print("\nHeight : " + tree.height());
-
-        System.out.print("\ncountOfNodes : " + tree.countOfNodes());
-
-        System.out.print("\ncountOfLeaves : " + tree.countOfLeaves());
-
-        System.out.print("\ncountOfInternalNodes : " + tree.countOfInternalNodes());
-
-        System.out.print("\nTree contains 8 : " + tree.contains(8));
-        System.out.print("\nTree contains 55 : " + tree.contains(55));
-        System.out.print("\nTree contains -1 : " + tree.contains(-1));
-        System.out.print("\nTree contains 44 : " + tree.contains(44));
-
-        System.out.print("\nMin value is: : " + tree.findMin());
-
-        tree.deleteVal(55);
-        tree.deleteVal(17);
-        tree.deleteVal(22);
-        tree.deleteVal(44);
-
-        System.out.print("\nLevelorder : ");
-        tree.levelorder();
+        System.out.println("\nheap sort...");
+        while (!heap.empty()) {
+            System.out.print(heap.get() + " ");
+            heap.remove();
+        }
     }
 }

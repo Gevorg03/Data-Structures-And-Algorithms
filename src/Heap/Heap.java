@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.Vector;
 
 public class Heap<T extends Comparable<T>> implements MyHeap<T> {
-    private Vector<T> m_data;
+    private Vector<T> m_data = new Vector<>();
 
     @Override
     public void insert(T data) {
@@ -33,7 +33,9 @@ public class Heap<T extends Comparable<T>> implements MyHeap<T> {
 
     @Override
     public void print() {
-
+        for (T el : m_data) {
+            System.out.print(el + " ");
+        }
     }
 
     private int leftIndex(int i) {
@@ -67,6 +69,15 @@ public class Heap<T extends Comparable<T>> implements MyHeap<T> {
             return;
         int maxChildIndex = leftIndex(i);
 
-        
+        if (maxChildIndex == -1)
+            return;
+        final int rIndex = rightIndex(i);
+        if (rIndex != -1 && m_data.get(rIndex).compareTo(m_data.get(maxChildIndex)) > 0) {
+            maxChildIndex = rIndex;
+        }
+        if (m_data.get(i).compareTo(m_data.get(maxChildIndex)) < 0) {
+            Collections.swap(m_data, m_data.indexOf(m_data.get(i)), m_data.indexOf(m_data.get(maxChildIndex)));
+            heapifyDown(maxChildIndex);
+        }
     }
 }
